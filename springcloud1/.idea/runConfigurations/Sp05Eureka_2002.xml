@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Sp05Eureka-2002" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="sp05-eureka" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="cn.tedu.sp05.Sp05EurekaApplication" />
+    <option name="PROGRAM_PARAMETERS" value="--spring.profiles.active=eureka2 --server.port=2002" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
