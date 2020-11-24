@@ -3,3 +3,8 @@ spring:
     name: order-service
 server:
   port: 8201
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka:2:2002/eureka

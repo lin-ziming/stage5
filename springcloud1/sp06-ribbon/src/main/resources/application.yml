@@ -1,0 +1,21 @@
+# 06项目用来测试远程调用和ribbon工具
+# 等功能测试 测试完之后，06项目会废弃，直接删除
+spring:
+  application:
+    name: ribbon
+
+server:
+  port: 3001
+
+# 连接eureka,从eureka发现其他服务的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:2001/eureka,http://eureka2:2002/eureka
+
+# 配置 Ribbon 重试次数
+ribbon:
+  # 次数参数没有提示，并且会有黄色警告
+  # 重试次数越少越好，一般建议用 0 , 1
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2

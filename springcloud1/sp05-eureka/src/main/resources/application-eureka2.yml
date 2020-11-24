@@ -1,0 +1,10 @@
+eureka:
+  instance:
+    hostname: eureka2 #主机名，集群中区分不同服务器
+  client:
+    register-with-eureka: true #profile的配置会覆盖公用配置
+    fetch-registry: true #profile的配置会覆盖公用配置
+
+    # 2要连接1
+    service-url:
+      defaultZone: http://eureka1:2001/eureka  #eureka2启动时向eureka1注册

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Haitao
@@ -27,8 +28,15 @@ public class ItemController {
 
     //获取订单的商品列表
     @GetMapping("/{orderId}")
-    public JsonResult<List<Item>> getItems(@PathVariable String orderId){
+    public JsonResult<List<Item>> getItems(@PathVariable String orderId) throws InterruptedException {
         log.info("获取商品列表，orderId="+orderId+",port="+port);
+
+        //模拟延迟代码
+        if (Math.random() < 0.9){
+            long t = new Random().nextInt(5000);
+            log.info("延迟："+t);
+            Thread.sleep(t);
+        }
 
         List<Item> items = itemService.getItems(orderId);
         return JsonResult.ok().data(items).msg("port="+port);

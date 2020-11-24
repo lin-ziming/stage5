@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.tedu</groupId>
-    <artifactId>sp03-userservice</artifactId>
+    <artifactId>sp06-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sp03-userservice</name>
+    <name>sp06-ribbon</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -16,6 +16,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>sp01-commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -32,22 +37,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>cn.tedu</groupId>
-            <artifactId>sp01-commons</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -55,7 +57,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -83,7 +84,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.4.RELEASE</version>
                 <configuration>
-                    <mainClass>cn.tedu.sp03.Sp03UserserviceApplication</mainClass>
+                    <mainClass>cn.tedu.sp06.Sp06RibbonApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

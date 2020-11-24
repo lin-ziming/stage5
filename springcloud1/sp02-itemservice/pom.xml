@@ -37,10 +37,31 @@
             <artifactId>sp01-commons</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!--用EditStarters插件添加依赖
+            在pom.xml代码中，alt+insert，选择EditStarters
+
+            添加eureka client依赖
+
+            会添加两段代码：
+            1.在底下会添加一段<dependencyManagement>
+            2.在当前位置会添加<dependency>-->
+
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
