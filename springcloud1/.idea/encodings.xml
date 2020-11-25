@@ -11,5 +11,9 @@
     <file url="file://$PROJECT_DIR$/sp05-eureka/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sp06-ribbon/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sp06-ribbon/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sp08-hystrix-dashboard/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sp08-hystrix-dashboard/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sp09-feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sp09-feign/src/main/resources" charset="UTF-8" />
   </component>
 </project>

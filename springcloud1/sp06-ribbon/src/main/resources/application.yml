@@ -19,3 +19,17 @@ ribbon:
   # 重试次数越少越好，一般建议用 0 , 1
   MaxAutoRetries: 1
   MaxAutoRetriesNextServer: 2
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000  # 默认是1秒
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
