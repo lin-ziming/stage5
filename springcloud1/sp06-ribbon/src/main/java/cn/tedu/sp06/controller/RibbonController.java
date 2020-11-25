@@ -35,26 +35,26 @@ public class RibbonController {
 
     @PostMapping("/item-service/decreaseNumber")
     public JsonResult decreaseNumber(@RequestBody List<Item> items){
-        return rt.postForObject("http://item-service:8001/decreaseNumber",items,JsonResult.class);
+        return rt.postForObject("http://item-service/decreaseNumber",items,JsonResult.class);
     }
 
     //---------------------------------------------
 
     @GetMapping("/user-service/{userId}")
     public JsonResult<User> getUser(@PathVariable Integer userId){
-        return rt.getForObject("http://user-service:8101/{1}",JsonResult.class,userId);
+        return rt.getForObject("http://user-service/{1}",JsonResult.class,userId);
     }
     @GetMapping("/user-service/{userId}/score")
     public JsonResult<?> addScore(@PathVariable Integer userId,Integer score){
-        return rt.getForObject("http://user-service:8101/{1}/score?score={2}",JsonResult.class,userId,score);
+        return rt.getForObject("http://user-service/{1}/score?score={2}",JsonResult.class,userId,score);
     }
 
     @GetMapping("/order-service/{orderId}")
     public JsonResult<Order> getOrder(@PathVariable String orderId){
-        return rt.getForObject("http://order-service:8201/{1}",JsonResult.class,orderId);
+        return rt.getForObject("http://order-service/{1}",JsonResult.class,orderId);
     }
     @GetMapping("/order-service")
     public JsonResult<?> addOrder(){
-        return rt.getForObject("http://order-service:8201/",JsonResult.class);
+        return rt.getForObject("http://order-service/",JsonResult.class);
     }
 }

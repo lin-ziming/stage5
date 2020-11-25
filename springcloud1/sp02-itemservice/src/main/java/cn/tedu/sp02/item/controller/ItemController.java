@@ -32,8 +32,8 @@ public class ItemController {
         log.info("获取商品列表，orderId="+orderId+",port="+port);
 
         //模拟延迟代码
-        if (Math.random() < 0.9){
-            long t = new Random().nextInt(5000);
+        if (Math.random() < 0.9){ //90%的概率执行延迟
+            long t = new Random().nextInt(5000);//5秒内的延迟时长
             log.info("延迟："+t);
             Thread.sleep(t);
         }
