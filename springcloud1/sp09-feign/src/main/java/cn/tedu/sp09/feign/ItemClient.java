@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 根据服务id,从注册表得到主机地址
  */
-@FeignClient(name = "item-service")
+@FeignClient(name = "item-service",fallback = ItemClientFB.class)
 public interface ItemClient {
     @GetMapping("/{orderId}")
     JsonResult<List<Item>> getItems(@PathVariable String orderId);

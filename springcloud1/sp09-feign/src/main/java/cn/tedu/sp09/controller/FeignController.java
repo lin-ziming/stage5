@@ -9,6 +9,7 @@ import cn.tedu.sp09.feign.UserClient;
 import cn.tedu.web.util.JsonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,10 +17,15 @@ import java.util.List;
 @RestController
 @Slf4j
 public class FeignController {
+    @Qualifier("item-service")
     @Autowired
     private ItemClient itemClient;
+
+    @Qualifier("order-service")
     @Autowired
     private OrderClient orderClient;
+
+    @Qualifier("user-service")
     @Autowired
     private UserClient userClient;
 
