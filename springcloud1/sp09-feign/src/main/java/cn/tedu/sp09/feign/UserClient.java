@@ -12,9 +12,8 @@ public interface UserClient {
     @GetMapping("/{userId}")
     JsonResult<User> getUser(@PathVariable Integer userId);
 
+    //           /8/score?score=1000
     @GetMapping("/{userId}/score")
     JsonResult<?> addScore(@PathVariable Integer userId,
                            @RequestParam Integer score);
-
-
 }

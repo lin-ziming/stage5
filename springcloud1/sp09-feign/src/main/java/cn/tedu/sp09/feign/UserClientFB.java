@@ -4,12 +4,8 @@ import cn.tedu.sp01.pojo.User;
 import cn.tedu.web.util.JsonResult;
 import org.springframework.stereotype.Component;
 
-/**
- * @author Haitao
- * @date 2020/11/26 9:32
- */
 @Component
-public class UserClientFB implements UserClient{
+public class UserClientFB implements UserClient {
     @Override
     public JsonResult<User> getUser(Integer userId) {
         return JsonResult.err().msg("获取用户失败");

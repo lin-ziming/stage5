@@ -4,10 +4,6 @@ import cn.tedu.sp01.pojo.Order;
 import cn.tedu.web.util.JsonResult;
 import org.springframework.stereotype.Component;
 
-/**
- * @author Haitao
- * @date 2020/11/26 9:31
- */
 @Component
 public class OrderClientFB implements OrderClient{
     @Override

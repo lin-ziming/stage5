@@ -1,10 +1,10 @@
-package cn.tedu.sp10;
+package en.tedu.sp11;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Sp10TurbineApplicationTests {
+class Sp11ZuulApplicationTests {
 
     @Test
     void contextLoads() {

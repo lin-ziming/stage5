@@ -13,6 +13,4 @@ public interface OrderClient {
 
     @GetMapping("/")
     JsonResult<?> addOrder();
-
-
 }

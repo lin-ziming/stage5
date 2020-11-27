@@ -3,21 +3,30 @@ spring:
     name: feign
 server:
   port: 3001
-
 eureka:
   client:
     service-url:
       defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
 
+# 调整 ribbon 的重试参数
+# 针对所有服务的通用配置
+ribbon:
+  MaxAutoRetries: 1
+
+# 只针对 item-service 这一个服务有效，
+# 对其他服务不应用这个配置
+item-service:
+  ribbon:
+    MaxAutoRetries: 2
+
+# 启用 hystrix
 feign:
-  httpclient:
+  hystrix:
     enabled: true
 
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
