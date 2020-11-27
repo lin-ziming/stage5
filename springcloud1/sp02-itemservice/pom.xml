@@ -42,6 +42,11 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
         <!--用EditStarters插件添加依赖
             在pom.xml代码中，alt+insert，选择EditStarters
 

@@ -9,6 +9,7 @@
         <module name="sp09-feign" />
         <module name="sp02-itemservice" />
         <module name="sp06-ribbon" />
+        <module name="sp12-config" />
         <module name="sp05-eureka" />
         <module name="sp10-turbine" />
         <module name="untitled" />
@@ -30,6 +31,7 @@
       <module name="sp09-feign" target="1.8" />
       <module name="sp10-turbine" target="1.8" />
       <module name="sp11-zuul" target="1.8" />
+      <module name="sp12-config" target="1.8" />
       <module name="untitled" target="1.8" />
     </bytecodeTargetLevel>
   </component>
