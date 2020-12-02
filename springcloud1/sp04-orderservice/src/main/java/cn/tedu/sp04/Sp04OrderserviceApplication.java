@@ -10,8 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 public class Sp04OrderserviceApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Sp04OrderserviceApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(Sp04OrderserviceApplication.class, args);
+	}
 
 }
