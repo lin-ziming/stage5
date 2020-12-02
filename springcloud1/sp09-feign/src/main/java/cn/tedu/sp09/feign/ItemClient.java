@@ -2,7 +2,6 @@ package cn.tedu.sp09.feign;
 
 import cn.tedu.sp01.pojo.Item;
 import cn.tedu.web.util.JsonResult;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
