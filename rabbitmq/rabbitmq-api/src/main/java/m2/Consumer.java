@@ -16,7 +16,7 @@ public class Consumer {
         Channel c = f.newConnection().createChannel();
 
         // 定义队列
-        c.queueDeclare("helloworld", false, false, false, null);
+        c.queueDeclare("task_queue", true, false, false, null);
 
         DeliverCallback deliverCallback = new DeliverCallback() {
             @Override
@@ -35,7 +35,7 @@ public class Consumer {
 
                 //向服务器发送消息的回执
                 // c.basicAck(回执(long类型的编码), 是否一次确认多条消息);
-//                c.basicAck(message.getEnvelope().getDeliveryTag(), false);
+                c.basicAck(message.getEnvelope().getDeliveryTag(), false);
                 System.out.println("消息处理结束");
             }
         };
@@ -47,10 +47,10 @@ public class Consumer {
 
         // 每次只接收处理1条消息，处理完成之前不接收下一条
         // 必须在手动 ACK 模式下才有效
-//        c.basicQos(1);
+        c.basicQos(1);
 
         // 消费数据
         // 第二个参数： true - 自动确认     false - 手动确认
-        c.basicConsume("helloworld", true, deliverCallback, cancelCallback);
+        c.basicConsume("task_queue", false, deliverCallback, cancelCallback);
     }
 }

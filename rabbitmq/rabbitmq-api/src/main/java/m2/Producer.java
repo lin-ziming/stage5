@@ -19,7 +19,7 @@ public class Producer {
         Channel c = f.newConnection().createChannel();
         // 定义队列
         // 队列如果在服务器端已经存在，属性不可变
-        c.queueDeclare("helloworld", false, false, false, null);
+        c.queueDeclare("task_queue", true, false, false, null);
 
         // 发送消息
         // 循环输入消息发送
@@ -31,7 +31,7 @@ public class Producer {
         while (true) {
             System.out.print("输入消息：");
             String msg = new Scanner(System.in).nextLine();
-            c.basicPublish("", "helloworld", null, msg.getBytes());
+            c.basicPublish("", "task_queue", MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes());
         }
     }
 }
