@@ -11,6 +11,11 @@ eureka:
       defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
 
 turbine:
+  # 聚合哪些服务
+  # 连接订单的两台服务器，抓取监控数据
+  # http://localhost:8201/actuator/hystrix.stream
+  # http://localhost:8202/actuator/hystrix.stream
+  # 暴露的聚合监控断点：http://localhost:5001/turbine.stream
   app-config: order-service
   cluster-name-expression: new String("default")
 
