@@ -1,0 +1,21 @@
+#item-service.yml        主配置
+# -dev,-test,-prod 是profile：轮廓，简况，配置文件
+#item-service-dev.yml    开发
+#item-service-test.yml   测试
+#item-service-prod.yml   生产
+
+spring:
+  application:
+    name: item-service
+  # 防止配置中心的配置，覆盖应用的本地配置
+  cloud:
+    config:
+      override-none: true
+
+server:
+  port: 8001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka:2:2002/eureka
