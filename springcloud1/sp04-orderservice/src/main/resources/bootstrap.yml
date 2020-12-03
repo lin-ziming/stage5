@@ -1,17 +1,17 @@
-## bootstrap.yml
-## 获取地址表，要从注册表获取配置中心的地址
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
-#
-#spring:
-#  cloud:
-#    config:
-#      discovery:
-#        enabled: true
-#        service-id: config-server   # 配置中心的服务id
-#
-#      # order-service-dev.yml
-#      name: order-service
-#      profile: dev
+# bootstrap.yml
+# 获取地址表，要从注册表获取配置中心的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
+
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server   # 配置中心的服务id
+
+      # order-service-dev.yml
+      name: order-service
+      profile: dev
