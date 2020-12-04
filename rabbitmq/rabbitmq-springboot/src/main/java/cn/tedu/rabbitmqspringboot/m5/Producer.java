@@ -1,4 +1,4 @@
-package cn.tedu.rabbitmqspringboot.m4;
+package cn.tedu.rabbitmqspringboot.m5;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class Producer {
                 String msg = new Scanner(System.in).nextLine();
                 System.out.print("输入路由键： ");
                 String key = new Scanner(System.in).nextLine();
-                amqpTemplate.convertAndSend("direct_logs",key,msg);
+                amqpTemplate.convertAndSend("topic_logs",key,msg);
             }
         }).start();
 

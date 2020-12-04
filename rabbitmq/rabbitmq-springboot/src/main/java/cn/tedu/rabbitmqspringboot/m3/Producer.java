@@ -29,7 +29,7 @@ public class Producer {
          */
         new Thread(() -> {
             while (true){
-                System.out.println("输入消息： ");
+                System.out.print("输入消息： ");
                 String msg = new Scanner(System.in).nextLine();
                 amqpTemplate.convertAndSend("logs","",msg);
             }
