@@ -2,8 +2,14 @@ package test;
 
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
 import org.apache.lucene.document.*;
+import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.Term;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TermQuery;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
 import org.junit.Test;
 
@@ -46,6 +52,33 @@ public class Test1 {
 
         writer.flush();
         writer.close();
+    }
+
+    @Test
+    public void test2() throws IOException {
+        // 在索引中搜索数据
+        // 文件夹
+        FSDirectory d = FSDirectory.open(new File("C:\\java\\lucene").toPath());
+        // 索引读取工具
+        DirectoryReader reader = DirectoryReader.open(d);
+        // 搜索器工具
+        IndexSearcher searcher = new IndexSearcher(reader);
+        // 封装搜索的关键词
+        TermQuery query = new TermQuery(new Term("title", "华为"));
+        // 搜索，得到结果： [{doc:3, score:0.679}, {doc:1, score:0.515}]
+        TopDocs topDocs = searcher.search(query, 20);
+        // 遍历
+        for (ScoreDoc sd : topDocs.scoreDocs) {
+            int id = sd.doc;    //文档索引编号
+            float score = sd.score;  //相关度得分
+            Document doc = searcher.doc(id);  //文档摘要
+            System.out.println(id);
+            System.out.println(score);
+            System.out.println(doc.get("id"));
+            System.out.println(doc.get("title"));
+            System.out.println(doc.get("sellPoint"));
+            System.out.println("---------------------------");
+        }
     }
 
 }
