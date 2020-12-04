@@ -13,3 +13,4 @@ spring:
       # item-service-dev.yml
       name: item-service
       profile: dev
+
