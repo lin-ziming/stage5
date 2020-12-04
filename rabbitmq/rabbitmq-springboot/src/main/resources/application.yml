@@ -4,4 +4,7 @@ spring:
     username: admin
     password: admin
 
+    listener:
+      simple:
+        prefetch: 1  # 默认250
 
