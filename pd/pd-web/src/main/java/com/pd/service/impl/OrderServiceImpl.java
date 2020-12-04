@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,40 +54,44 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	PdOrderItemMapper pdOrderItemMapper;
 
-
-
+	// RabbitAutoConfiguration 自动配置类中创建的对象
+	@Autowired
+	private AmqpTemplate amqpTemplate;
 	
 	public String saveOrder(PdOrder pdOrder) throws Exception {
-		String orderId = generateId();
+		String orderId = generateId();	//生成订单id
 		pdOrder.setOrderId(orderId);
-
+		// 转换成byte[]数组再发送
+		amqpTemplate.convertAndSend("orderQueue",pdOrder);
 		
-		PdShipping pdShipping = pdShippingMapper.selectByPrimaryKey(pdOrder.getAddId());
-		pdOrder.setShippingName(pdShipping.getReceiverName());
-		pdOrder.setShippingCode(pdShipping.getReceiverAddress());
-		pdOrder.setStatus(1);// 
-		pdOrder.setPaymentType(1);
-		pdOrder.setPostFee(10D);
-		pdOrder.setCreateTime(new Date());
+//		PdShipping pdShipping = pdShippingMapper.selectByPrimaryKey(pdOrder.getAddId());
+//		pdOrder.setShippingName(pdShipping.getReceiverName());
+//		pdOrder.setShippingCode(pdShipping.getReceiverAddress());
+//		pdOrder.setStatus(1);//
+//		pdOrder.setPaymentType(1);
+//		pdOrder.setPostFee(10D);
+//		pdOrder.setCreateTime(new Date());
+//
+//		double payment = 0;
+//		List<ItemVO> itemVOs = selectCartItemByUseridAndItemIds(pdOrder.getUserId(), pdOrder.getItemIdList());
+//		for (ItemVO itemVO : itemVOs) {
+//			PdOrderItem pdOrderItem = new PdOrderItem();
+//			String id = generateId();
+//			//String id="2";
+//			pdOrderItem.setId(id);
+//			pdOrderItem.setOrderId(orderId);
+//			pdOrderItem.setItemId("" + itemVO.getPdItem().getId());
+//			pdOrderItem.setTitle(itemVO.getPdItem().getTitle());
+//			pdOrderItem.setPrice(itemVO.getPdItem().getPrice());
+//			pdOrderItem.setNum(itemVO.getPdCartItem().getNum());
+//
+//			payment = payment + itemVO.getPdCartItem().getNum() * itemVO.getPdItem().getPrice();
+//			pdOrderItemMapper.insert(pdOrderItem);
+//		}
+//		pdOrder.setPayment(payment);
+//		pdOrderMapper.insert(pdOrder);
 
-		double payment = 0;
-		List<ItemVO> itemVOs = selectCartItemByUseridAndItemIds(pdOrder.getUserId(), pdOrder.getItemIdList());
-		for (ItemVO itemVO : itemVOs) {
-			PdOrderItem pdOrderItem = new PdOrderItem();
-			String id = generateId();
-			//String id="2";
-			pdOrderItem.setId(id);
-			pdOrderItem.setOrderId(orderId);
-			pdOrderItem.setItemId("" + itemVO.getPdItem().getId());
-			pdOrderItem.setTitle(itemVO.getPdItem().getTitle());
-			pdOrderItem.setPrice(itemVO.getPdItem().getPrice());
-			pdOrderItem.setNum(itemVO.getPdCartItem().getNum());
 
-			payment = payment + itemVO.getPdCartItem().getNum() * itemVO.getPdItem().getPrice();
-			pdOrderItemMapper.insert(pdOrderItem);
-		}
-		pdOrder.setPayment(payment);
-		pdOrderMapper.insert(pdOrder);
 		return orderId;
 	}
 

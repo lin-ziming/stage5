@@ -9,6 +9,12 @@ spring:
         username: root
         password: root
 
+    rabbitmq:
+      host: 192.168.64.140
+      username: admin
+      password: admin
+      # virtual-host:
+
 mybatis:
   #typeAliasesPackage: cn.tedu.ssm.pojo
   mapperLocations: classpath:com.pd.mapper/*.xml
