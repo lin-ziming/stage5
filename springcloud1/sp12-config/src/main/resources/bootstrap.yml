@@ -1,0 +1,12 @@
+# sp12
+# bootstrap.yml
+
+spring:
+  cloud:
+    inetutils:
+      # 想要使用的网卡ip网段，可以用正则表达式匹配
+      preferred-networks:
+        - 192\.168\.2\..+
+      # 要忽略的网卡
+      ignored-interfaces:
+        - VM.+

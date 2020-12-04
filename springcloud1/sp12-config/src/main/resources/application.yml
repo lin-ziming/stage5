@@ -13,3 +13,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
+  instance:
+    # 注册ip地址，而不是主机名
+    prefer-ip-address: true
+    # 可选的配置，在列表显示时，也显示ip
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port} #界面列表中显示的格式也显示ip
