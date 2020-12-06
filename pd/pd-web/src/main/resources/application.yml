@@ -15,6 +15,11 @@ spring:
       password: admin
       # virtual-host:
 
+    data:
+      solr:
+        host: http://192.168.64.170:8983/solr/pd
+
+
 mybatis:
   #typeAliasesPackage: cn.tedu.ssm.pojo
   mapperLocations: classpath:com.pd.mapper/*.xml
