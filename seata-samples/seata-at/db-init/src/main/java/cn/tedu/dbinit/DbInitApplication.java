@@ -21,18 +21,23 @@ public class DbInitApplication {
         SpringApplication.run(DbInitApplication.class, args);
     }
 
+    /**
+     * spring扫描创建完所有对象，完成所有的依赖注入后，会自动执行@PostConstruct方法
+     * @throws SQLException
+     */
     @PostConstruct
     public void init() throws SQLException {
-        exec(dataSource, "sql/account.sql");
-        exec(dataSource, "sql/storage.sql");
-        exec(dataSource, "sql/order.sql");
-        exec(dataSource, "sql/seata-server.sql");
+        exec( "sql/account.sql");
+        exec( "sql/storage.sql");
+        exec( "sql/order.sql");
+        exec( "sql/seata-server.sql");
     }
 
-    private void exec(DataSource accountDatasource, String script) throws SQLException {
-        ClassPathResource rc = new ClassPathResource(script, DbInitApplication.class.getClassLoader());
-        EncodedResource er = new EncodedResource(rc, "utf-8");
-        ScriptUtils.executeSqlScript(accountDatasource.getConnection(), er);
+    private void exec( String sql) throws SQLException {
+        ClassPathResource cpr = new ClassPathResource(sql);
+        EncodedResource er = new EncodedResource(cpr, "UTF-8");
+
+        ScriptUtils.executeSqlScript(dataSource.getConnection(), er);
     }
 }
 
