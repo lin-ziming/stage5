@@ -18,10 +18,10 @@ eureka:
     prefer-ip-address: true
 mybatis-plus:
   type-aliases-package: cn.tedu.storage.entity
-  mapper-locations:
-    - classpath:/mapper/*.xml
+  mapper-locations: /mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
 logging:
   level:
     cn.tedu.storage.mapper: debug

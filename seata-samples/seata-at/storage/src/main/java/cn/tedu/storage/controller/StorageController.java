@@ -14,9 +14,9 @@ public class StorageController {
     @Autowired
     private StorageService storageService;
 
-    @GetMapping("decrease")
+    @GetMapping("/decrease")
     public String decrease(Long productId,Integer count){
         storageService.decrease(productId,count);
-        return "减少商品库存成功";
+        return "减少商品库存完成";
     }
 }
