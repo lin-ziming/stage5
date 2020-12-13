@@ -31,17 +31,17 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void create(Order order) {
         //临时随机产生一个id
-//        Long orderId = Math.abs(new Random().nextLong());
+        Long orderId = Math.abs(new Random().nextLong());
 
         // 从全局唯一id发号器获得id
-        Long orderId = Long.valueOf(easyIdGeneratorClient.nextId("order_business"));
+//        Long orderId = Long.valueOf(easyIdGeneratorClient.nextId("order_business"));
         order.setId(orderId);
 
         orderMapper.create(order);
 
         // 远程调用库存，减少库存
         storageClient.decrease(order.getUserId(),order.getCount());
-        // 远程动用账户，扣减金额
+        // 远程调用账户，扣减金额
         accountClient.decrease(order.getUserId(),order.getMoney());
     }
 }

@@ -29,6 +29,9 @@ public class SegmentEasyIdController {
     @Qualifier("segmentEasyIdService")
     private EasyIdService easyIdService;
 
+    /**
+     *  /next_id?businessType=order_business
+     */
     @GetMapping("/next_id")
     public String getNextId(@NotEmpty String businessType) {
         return easyIdService.getNextId(businessType).toString();
