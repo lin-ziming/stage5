@@ -2,7 +2,7 @@ package cn.tedu.order.service;
 
 import cn.tedu.order.entity.Order;
 import cn.tedu.order.feign.AccountClient;
-import cn.tedu.order.feign.EasyIdGeneratorClient;
+import cn.tedu.order.feign.EasyIdClient;
 import cn.tedu.order.feign.StorageClient;
 import cn.tedu.order.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderMapper orderMapper;
 
     @Autowired
-    EasyIdGeneratorClient easyIdGeneratorClient;
+    EasyIdClient easyIdClient;
 
     @Autowired
     private AccountClient accountClient;
@@ -31,10 +31,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void create(Order order) {
         //临时随机产生一个id
-        Long orderId = Math.abs(new Random().nextLong());
+//        Long orderId = Math.abs(new Random().nextLong());
 
-        // 从全局唯一id发号器获得id
-//        Long orderId = Long.valueOf(easyIdGeneratorClient.nextId("order_business"));
+        // 远程调用 全局唯一id发号器，获得id
+        Long orderId = Long.valueOf(easyIdClient.nextId("order_business"));
         order.setId(orderId);
 
         orderMapper.create(order);
