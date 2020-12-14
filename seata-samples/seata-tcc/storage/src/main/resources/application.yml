@@ -7,6 +7,11 @@ spring:
     username: root
     password: root
 
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: order_tx_group
+
 server:
   port: 8082
 
