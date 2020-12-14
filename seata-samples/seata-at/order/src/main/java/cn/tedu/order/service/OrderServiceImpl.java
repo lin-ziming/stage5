@@ -5,6 +5,7 @@ import cn.tedu.order.feign.AccountClient;
 import cn.tedu.order.feign.EasyIdClient;
 import cn.tedu.order.feign.StorageClient;
 import cn.tedu.order.mapper.OrderMapper;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,12 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private StorageClient storageClient;
 
+    /**
+     *  创建 TM(Transaction Manager)，由TM向协调器申请开启全局事务
+     *  @GlobalTransactional 注解只需要在事务开始的方法加一次
+     * @param order
+     */
+    @GlobalTransactional
     @Override
     public void create(Order order) {
         //临时随机产生一个id
@@ -40,8 +47,8 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.create(order);
 
         // 远程调用库存，减少库存
-        storageClient.decrease(order.getUserId(),order.getCount());
+//        storageClient.decrease(order.getUserId(),order.getCount());
         // 远程调用账户，扣减金额
-        accountClient.decrease(order.getUserId(),order.getMoney());
+//        accountClient.decrease(order.getUserId(),order.getMoney());
     }
 }
