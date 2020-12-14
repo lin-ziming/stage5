@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Haitao
  * @date 2020/12/9 16:33
  */
-@FeignClient(name = "storage")
+@FeignClient(name = "STORAGE")
 public interface StorageClient {
     @GetMapping("/decrease")
     String decrease(@RequestParam Long productId,@RequestParam Integer count);

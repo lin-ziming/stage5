@@ -47,8 +47,8 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.create(order);
 
         // 远程调用库存，减少库存
-//        storageClient.decrease(order.getUserId(),order.getCount());
+        storageClient.decrease(order.getUserId(),order.getCount());
         // 远程调用账户，扣减金额
-//        accountClient.decrease(order.getUserId(),order.getMoney());
+        accountClient.decrease(order.getUserId(),order.getMoney());
     }
 }
