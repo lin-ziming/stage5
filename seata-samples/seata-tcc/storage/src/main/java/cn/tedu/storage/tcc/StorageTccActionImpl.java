@@ -6,6 +6,7 @@ import io.seata.rm.tcc.api.BusinessActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 /**
  * @author Haitao
  * @date 2020/12/14 17:36
@@ -32,7 +33,7 @@ public class StorageTccActionImpl implements StorageTccAction {
     }
 
     @Override
-    public boolean commmit(BusinessActionContext ctx) {
+    public boolean commit(BusinessActionContext ctx) {
         String p = ResultHolder.getResult(StorageTccAction.class, ctx.getXid());
         if (p==null){
             return true;

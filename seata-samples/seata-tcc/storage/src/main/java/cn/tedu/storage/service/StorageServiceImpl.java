@@ -19,9 +19,7 @@ public class StorageServiceImpl implements StorageService {
 //        storageMapper.decrease(productId,count);
 
         storageTccAction.prepareDecreaseStorage(
-                null,
-                productId,
-                count);
+                null, productId, count);
 
     }
 

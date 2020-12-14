@@ -17,6 +17,6 @@ public interface StorageTccAction {
             @BusinessActionContextParameter(paramName = "productId") Long productId,
             @BusinessActionContextParameter(paramName = "count") Integer count);
 
-    boolean commmit(BusinessActionContext ctx);
+    boolean commit(BusinessActionContext ctx);
     boolean rollback(BusinessActionContext ctx);
 }
