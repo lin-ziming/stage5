@@ -26,6 +26,7 @@ public class Producer {
         p.setTransactionListener(new TransactionListener() {
             Map<String,LocalTransactionState> map = new ConcurrentHashMap<>();
 
+            //执行本地事务
             @Override
             public LocalTransactionState executeLocalTransaction(Message message, Object o) {
                 if (Math.random() < 1) { //模拟网络中断，测试回查
@@ -46,6 +47,7 @@ public class Producer {
                 }
             }
 
+            //处理事务回查
             @Override
             public LocalTransactionState checkLocalTransaction(MessageExt messageExt) {
                 System.out.println("服务器正在回查事务状态");

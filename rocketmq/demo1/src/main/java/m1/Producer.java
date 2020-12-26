@@ -22,7 +22,7 @@ public class Producer {
         Tag 相当于是二级分类
          */
         Message msg = new Message("Topic1","TagA","Hello world!".getBytes());
-        msg.setDelayTimeLevel(3);//设置延迟时间：10s
+        msg.setDelayTimeLevel(3);//设置延迟时间级别3：10s
 
         SendResult r = p.send(msg);
         System.out.println(r);
